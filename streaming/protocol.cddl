@@ -465,11 +465,17 @@ run.start = {
   params: RunStartParams,
 }
 
+LangSmithTracer = {
+  ? projectName: text,                   ; Additional LangSmith project receiving the trace
+  ? exampleId: text,                     ; LangSmith dataset example associated with the trace
+}
+
 RunStartParams = {
   assistantId: text,                     ; Deployed graph/agent to run
   input: any,                            ; Graph input, resume value, or injected message
   ? config: {* text => any},             ; Per-run config overrides
   ? metadata: {* text => any},           ; Per-run metadata
+  ? langsmithTracer: LangSmithTracer,    ; Optional additional LangSmith trace destination
 }
 
 RunResult = {
